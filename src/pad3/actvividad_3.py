@@ -12,6 +12,11 @@ data = {
     'Granadilla': [20],
     'Tomates': [50]
 }
+df = pd.DataFrame(data)
+
+# Guardar el DataFrame en un archivo CSV
+df.to_csv('punto_1.csv', index=False)
+
 
 # Convertir a DataFrame
 df = pd.DataFrame(data)
@@ -79,7 +84,7 @@ print(utensilios)
 
 # Cargar el archivo CSV (asegúrate de especificar la ruta correcta)
 # Cambia 'ruta/al/archivo.csv' por el nombre de tu archivo
-df = pd.read_csv('C:\winemag-data-130k-v2.csv')
+df = pd.read_csv('C:\dataset_wine\winemag-data_first150k.csv')
 
 # Mostrar las primeras filas del DataFrame
 print(df.head())
@@ -92,7 +97,7 @@ pd.set_option('display.width', 1000)       # Ajuste de ancho para mejor visualiz
 print(df)
 
 # Cargar los datos en un DataFrame (cambia 'ruta/a/tu/archivo.csv' con la ruta de tu archivo)
-df = pd.read_csv('C:\winemag-data-130k-v2.csv')
+df = pd.read_csv('C:\dataset_wine\winemag-data_first150k.csv')
 
 # Obtener las primeras cinco filas
 primeras_filas = df.head(5)
