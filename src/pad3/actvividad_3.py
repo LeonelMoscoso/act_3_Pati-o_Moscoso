@@ -332,7 +332,93 @@ indice_max_precio = wines['price'].idxmax()
 vino_caro = wines.loc[indice_max_precio]
 
 # Generación del archivo
-with open('vino_caro.txt', 'w') as f:
+with open('punto_10_vino_caro.txt', 'w') as f:
     f.write("El vino más caro de California es:\n")
     for key, value in vino_caro.items():
         f.write(f"{key}: {value}\n")
+        
+    # Datos de ejemplo sobre los tipos de uva más comunes en California
+data = {
+    'Variedad': ['Chardonnay', 'Cabernet Sauvignon', 'Merlot', 'Zinfandel', 'Pinot Noir'],
+    'Descripción': [
+        'Uva blanca ampliamente cultivada, elegante y fresca.',
+        'Uva tinta, conocida por su cuerpo y taninos fuertes.',
+        'Variedad suave, frutal y fácil de beber.',
+        'Uva tinta californiana, con sabores a mora y especias.',
+        'Uva tinta, ligera y con notas de frutas rojas.'
+    ]
+}
+
+# Crear un DataFrame
+df = pd.DataFrame(data)
+
+# Mostrar el DataFrame
+print("Tipos de uva más comunes en California:")
+print(df)
+
+# Guardar en un archivo CSV
+df.to_csv('punto_11_tipos_de_uva_california.csv', index=False)
+
+print("El archivo 'tipos_de_uva_california.csv' ha sido generado exitosamente.")   
+
+# Lista de tipos de uva y sus cantidades
+uvas_california = [
+    ("Pinot Noir", 7633),
+    ("Cabernet Sauvignon", 7452),
+    ("Chardonnay", 6536),
+    ("Zinfandel", 3691),
+    ("Syrah", 2705),
+    ("Merlot", 2293),
+    ("Sauvignon Blanc", 2220),
+    ("Red Blend", 1783),
+    ("Bordeaux-style Red Blend", 1130),
+    ("Petite Sirah", 830)
+]
+
+# Nombre del archivo a crear
+nombre_archivo = 'tipos_uvas_california.txt'
+
+# Escribir la información en el archivo
+with open(nombre_archivo, 'w') as archivo:
+    for uva, cantidad in uvas_california:
+        archivo.write(f'{uva} {cantidad}\n')
+
+print(f'Archivo {nombre_archivo} creado con éxito.')
+
+# Datos 
+data = {
+    'variety': [
+        'Pinot Noir',
+        'Cabernet Sauvignon',
+        'Chardonnay',
+        'Zinfandel',
+        'Syrah',
+        'Merlot',
+        'Sauvignon Blanc',
+        'Red Blend',
+        'Bordeaux-style Red Blend',
+        'Petite Sirah'
+    ],
+    'count': [
+        7633,
+        7452,
+        6536,
+        3691,
+        2705,
+        2293,
+        2220,
+        1783,
+        1130,
+        830
+    ]
+}
+
+# Crear DataFrame
+df = pd.DataFrame(data)
+
+# Guardar DataFrame en un archivo CSV
+df.to_csv('punto_12_tipo uvas california.csv', index=False)
+
+# Imprimir en un formato similar al de la imagen
+print(df.to_string(index=False))
+print("Name: variety, dtype: int64")
