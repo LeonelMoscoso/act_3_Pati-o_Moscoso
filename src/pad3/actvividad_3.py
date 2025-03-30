@@ -138,16 +138,28 @@ print("Archivo 'reviews.csv' generado con éxito.")
 # Cargar los datos en un DataFrame (cambia 'ruta/a/tu/archivo.csv' con la ruta de tu archivo)
 df = pd.read_csv('C:\dataset_wine\winemag-data_first150k.csv')
 
-# Obtener las primeras cinco filas
-primeras_filas = df.head(5)
+# Para obtener las primeras cinco filas
+df_head = df.head(5)
 
-# Obtener las últimas cinco filas
-ultimas_filas = df.tail(5)
+# Mostrar en pantalla
+print(df_head)
 
-# Concatenar las dos partes verticalmente
-resultados = pd.concat([primeras_filas, ultimas_filas])
+# Guardar en un archivo
+df_head.to_csv('punto 5_primeras_cinco_filas.csv', index=False)
 
-# Guardar el resultado en un archivo CSV
-resultados.to_csv('resultado_primeras_ultimas_filas.csv', index=False)
+# Para visualizarlo en formato tabular Jupyter Notebook (opcional)
+df_head.style.set_table_styles(
+    [{'selector': 'thead th', 'props': [('background-color', '#333'), 
+                                          ('color', 'white')]},
+     {'selector': 'tbody td', 'props': [('background-color', '#444'), 
+                                          ('color', 'white')]}]
+)
 
-print("Archivo generado: resultado_primeras_ultimas_filas.csv")
+
+# Assuming df_head is your DataFrame
+styled_df = df_head.style.set_table_styles({
+    # Your styling options here
+})
+
+# Display styled DataFrame (in Jupyter notebook or similar)
+styled_df
