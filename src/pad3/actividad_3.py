@@ -423,3 +423,8 @@ df.to_csv('punto_12_tipo uvas california.csv', index=False)
 print(df.to_string(index=False))
 print("Name: variety, dtype: int64")
 
+try:
+    wine_data = pd.read_csv(file_path)
+except FileNotFoundError:
+    print(f"El archivo no se encontró en la ruta: {file_path}")
+    
