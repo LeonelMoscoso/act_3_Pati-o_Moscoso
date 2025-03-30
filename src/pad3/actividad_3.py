@@ -225,7 +225,7 @@ average_price = df['price'].mean()
 
 # Guardar el resultado en un archivo CSV
 result = pd.DataFrame({'Average Price': [average_price]})
-result.to_csv('average_wine_price.csv', index=False)
+result.to_csv('punto_7_average_wine_price.csv', index=False)
 
 print("Archivo 'average_wine_price.csv' creado con el precio promedio.")
 
@@ -301,7 +301,7 @@ print("Vino con el precio más alto:")
 print(max_price_row)
 
 # Guardar la información en un archivo CSV
-max_price_row.to_frame().T.to_csv('vino_mas_caro.csv', index=False)
+max_price_row.to_frame().T.to_csv('punto_8_vino_mas_caro.csv', index=False)
 
 print("Información guardada en 'vino_mas_caro.csv'")
 
@@ -338,7 +338,7 @@ data = {
 df = pd.DataFrame(data)
 
 # Guardar como archivo CSV
-df.to_csv('punto_9_vinos.csv', index=False)
+df.to_csv('punto_9_vinos california.csv', index=False)
 #
 # Cargar el dataset (cambia 'ruta_a_tu_archivo.csv' con la ruta de tu archivo CSV)
 
