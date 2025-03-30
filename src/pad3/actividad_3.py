@@ -8,6 +8,20 @@ class actividad_3:
     def __init__(self):
         pass
     
+    # Cargar el dataset
+file_path = r'C:\\dataset_wine\\winemag-data_first150k'  # Reemplaza esto con la ruta del archivo CSV
+try:
+    wine_data = pd.read_csv(file_path)
+    print(wine_data.head())  # Muestra las primeras filas del DataFrame
+except FileNotFoundError:
+    print("El archivo no se encuentra en la ruta especificada.")
+except pd.errors.EmptyDataError:
+    print("El archivo está vacío.")
+except pd.errors.ParserError:
+    print("Error al analizar el archivo. Verifica el formato CSV.")
+except Exception as e:
+    print(f"Se produjo un error desconocido: {e}")
+    
         # Crear un DataFrame
 data = {
     'Granadilla': [20],
@@ -42,21 +56,6 @@ print(utensilios)
 
 # Guardar la serie en un archivo de texto
 utensilios.to_csv('punto3_utensilios.csv', header=True)
-
-# Cargar el dataset
-file_path = r'C:\dataset_wine\winemag-data_first150k'  # Reemplaza esto con la ruta del archivo CSV
-try:
-    wine_data = pd.read_csv(file_path)
-    print(wine_data.head())  # Muestra las primeras filas del DataFrame
-except FileNotFoundError:
-    print("El archivo no se encuentra en la ruta especificada.")
-except pd.errors.EmptyDataError:
-    print("El archivo está vacío.")
-except pd.errors.ParserError:
-    print("Error al analizar el archivo. Verifica el formato CSV.")
-except Exception as e:
-    print(f"Se produjo un error desconocido: {e}")
-
 
 # Datos de la tabla
 data = {
