@@ -320,3 +320,19 @@ df = pd.DataFrame(data)
 
 # Guardar como archivo CSV
 df.to_csv('punto_9_vinos.csv', index=False)
+#
+# Cargar el dataset (cambia 'ruta_a_tu_archivo.csv' con la ruta de tu archivo CSV)
+
+wines = pd.read_csv('C:\dataset_wine\winemag-data_first150k.csv')
+
+# Encuentra el índice del vino con el precio más alto
+indice_max_precio = wines['price'].idxmax()
+
+# Obtén toda la información de ese vino
+vino_caro = wines.loc[indice_max_precio]
+
+# Generación del archivo
+with open('vino_caro.txt', 'w') as f:
+    f.write("El vino más caro de California es:\n")
+    for key, value in vino_caro.items():
+        f.write(f"{key}: {value}\n")
