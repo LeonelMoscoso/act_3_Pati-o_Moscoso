@@ -285,3 +285,38 @@ print(max_price_row)
 max_price_row.to_frame().T.to_csv('vino_mas_caro.csv', index=False)
 
 print("Información guardada en 'vino_mas_caro.csv'")
+
+# Definir los datos
+data = {
+    'Unnamed: 0': [0, 1, 2, 16, 19, 150892, 150896, 150914],
+    'country': ['US', 'US', 'US', 'US', 'US', 'US', 'US', 'US'],
+    'description': [
+        'This tremendous 100% varietal wine hails from...',
+        'Mac Watson honors the memory of a wine once ma...',
+        'The producer sources from two blocks of the v...',
+        'This blockbuster, powerhouse of a wine suggest...',
+        'This fresh and lively medium-bodied wine is b...',
+        'A light, earthy wine, with violet, berry and...',
+        'Some raspberry fruit in the aroma, but things...',
+        'Old-gold in color, and thick and syrupy. The...'
+    ],
+    'designation': [
+        'Martha\'s Vineyard', 'Special Selected Late Harvest',
+        'Cap\'s Crown Vineyard', 'Rainin Vineyard', 
+        'Cap\'s Crown Vineyard', 'Coastal',
+        None, 'Late Harvest Cluster Select'
+    ],
+    'points': [96, 96, 95, 95, 95, 82, 82, 94],
+    'price': [23.0, 9.0, 60.0, 325.0, 75.0, 10.0, 10.0, 25.0],
+    'province': ['California', 'California', 'California', 'California', 'California', 'California', 'California', 'California'],
+    'region_1': ['Napa Valley', 'Sonoma', 'Sonoma Coast', 'Diamond Mountain District', 'Sonoma Coast', 'California', 'California', 'Mendocino/Lake Counties'],
+    'region_2': ['Napa', 'Knights Valley', 'Sonoma', 'Napa', 'Sonoma', 'California Other', 'California Other', 'Lake Counties'],
+    'variety': ['Cabernet Sauvignon', 'Sauvignon Blanc', 'Pinot Noir', 'Cabernet Sauvignon', 'Pinot Noir', 'Merlot', 'Pinot Noir', 'White Riesling'],
+    'winery': ['Heitz', 'Macauley', 'Blue Farm', 'Hall', 'Gary Farrell', 'Callaway', 'Camelot', 'Navarro']
+}
+
+# Crear un DataFrame
+df = pd.DataFrame(data)
+
+# Guardar como archivo CSV
+df.to_csv('punto_9_vinos.csv', index=False)
