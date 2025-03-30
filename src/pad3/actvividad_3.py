@@ -30,21 +30,18 @@ df.to_csv('punto_2_ventas.csv')
 
 print("Archivo 'ventas.csv' creado exitosamente.")
 
-
-
-# Crear la serie con los utensilios y sus respectivas unidades
-utensilios = pd.Series(
-    {
-        'Cuchara': '3 unidades',
-        'Tenedor': '2 unidades',
-        'Cuchillo': '4 unidades',
-        'Plato': '5 unidades'
-    },
-    name='Cocina'
-)
+# Crear una serie con los utensilios y sus cantidades
+utensilios = pd.Series({'Cuchara': '3 unidades',
+                        'Tenedor': '2 unidades',
+                        'Cuchillo': '4 unidades',
+                        'Plato': '5 unidades'}, name='Cocina')
 
 # Mostrar la serie
 print(utensilios)
+
+# Guardar la serie en un archivo de texto
+utensilios.to_csv('punto3_utensilios.csv', header=True)
+
 
 # Cargar el archivo CSV (asegúrate de especificar la ruta correcta)
 # Cambia 'ruta/al/archivo.csv' por el nombre de tu archivo
