@@ -59,9 +59,6 @@ except Exception as e:
     print(f"Se produjo un error desconocido: {e}")
 
 
-# Mostrar las primeras filas para verificar la carga
-print(wine_data.head())
-
 # Datos de la tabla
 data = {
     "Unnamed: 0": [1, 2, 3, 4, 5, 6, 7, 8],
