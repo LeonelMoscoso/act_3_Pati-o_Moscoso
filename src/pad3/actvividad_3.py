@@ -42,20 +42,98 @@ print(utensilios)
 # Guardar la serie en un archivo de texto
 utensilios.to_csv('punto3_utensilios.csv', header=True)
 
+# Cargar el dataset
+file_path = 'C:\dataset_wine\winemag-data_first150k.csv'  # Reemplaza esto con la ruta del archivo CSV
+wine_data = pd.read_csv(file_path)
 
-# Cargar el archivo CSV (asegúrate de especificar la ruta correcta)
-# Cambia 'ruta/al/archivo.csv' por el nombre de tu archivo
-df = pd.read_csv('C:\dataset_wine\winemag-data_first150k.csv')
+# Mostrar las primeras filas para verificar la carga
+print(wine_data.head())
 
-# Mostrar las primeras filas del DataFrame
-print(df.head())
+# Datos de la tabla
+data = {
+    "Unnamed: 0": [1, 2, 3, 4, 5, 6, 7, 8],
+    "country": ["US", "Spain", "US", "France", "Italy", "France", "Italy", "France"],
+    "description": [
+        "This tremendous 100% varietal...",
+        "Ripe aromas of fig, blackberry...",
+        "Max Watson honors the memory...",
+        "This is the top wine from La Bequude...",
+        "Many people feel Piane represents southern...",
+        "Offers an intriguing nose with ginger...",
+        "The classic example comes from a vineyard...",
+        "More Pinot Grigios should taste like this..."
+    ],
+    "designation": [
+        "Martha's Vineyard", 
+        "Cardorum Selection Especial Reserve", 
+        "Special selected Lieu-dit", 
+        "Reserve", 
+        "Cuvée Prégnant", 
+        "Etre Prodin", 
+        "Carad du Rossi", 
+        None
+    ],
+    "points": [95, 96, 96, 94, 91, 92, 89, 15],
+    "price": [235.0, 60.0, 69.0, 66.0, 20.0, 22.0, 30.0, 15.0],
+    "province": [
+        "California", 
+        "Northern Spain", 
+        "California", 
+        "Provence", 
+        "Southern Italy", 
+        "Champagne", 
+        "Northeastern Italy", 
+        "Champagne"
+    ],
+    "region_1": [
+        "Napa Valley", 
+        "Toro", 
+        "Knights Valley", 
+        "Bandol", 
+        "Fino di Avellino", 
+        None, 
+        "Alto Adige", 
+        None
+    ],
+    "region_2": [
+        None, 
+        None, 
+        "Sonoma", 
+        "Provence red blend", 
+        "White Blend", 
+        "Champagne", 
+        "Pinot Grigio", 
+        "Champagne"
+    ],
+    "variety": [
+        "Cabernet Sauvignon", 
+        "Tempranillo", 
+        "Sauvignon Blanc", 
+        "Pinot Noir", 
+        "White Blend", 
+        "Champagne", 
+        "Pinot Grigio", 
+        "Pinot Grigio"
+    ],
+    "winery": [
+        "Heitz", 
+        "Bodegas Cibantos Rodriguez", 
+        "Maclay", 
+        "Domaine de la Bequude", 
+        "Feudi di San Gregorio", 
+        "H. Germain", 
+        "Alois Lageder", 
+        "Alois Lageder"
+    ],
+}
 
-# Para visualizar todas las columnas y configurar opciones
-pd.set_option('display.max_columns', None)  # Muestra todas las columnas
-pd.set_option('display.width', 1000)       # Ajuste de ancho para mejor visualización
+# Crear un DataFrame
+df = pd.DataFrame(data)
 
-# Mostramos el DataFrame completo (si no es muy grande)
-print(df)
+# Guardar en un archivo CSV
+df.to_csv('punto4_reviews.csv', index=False)
+
+print("Archivo 'reviews.csv' generado con éxito.")
 
 # Cargar los datos en un DataFrame (cambia 'ruta/a/tu/archivo.csv' con la ruta de tu archivo)
 df = pd.read_csv('C:\dataset_wine\winemag-data_first150k.csv')
