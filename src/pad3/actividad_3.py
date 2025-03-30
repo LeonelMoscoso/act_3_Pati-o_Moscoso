@@ -43,7 +43,7 @@ print(utensilios)
 utensilios.to_csv('punto3_utensilios.csv', header=True)
 
 # Cargar el dataset
-file_path = 'C:\dataset_wine\winemag-data_first150k.csv'  # Reemplaza esto con la ruta del archivo CSV
+file_path = r'C:\dataset_wine\winemag-data_first150k.csv'  # Reemplaza esto con la ruta del archivo CSV
 wine_data = pd.read_csv(file_path)
 
 # Mostrar las primeras filas para verificar la carga
