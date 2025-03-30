@@ -163,3 +163,16 @@ styled_df = df_head.style.set_table_styles({
 
 # Display styled DataFrame (in Jupyter notebook or similar)
 styled_df
+
+# Cargar el DataFrame (aquí debes especificar la fuente de tus datos)
+# df = pd.read_csv('tu_archivo.csv')  # Por ejemplo, si es un CSV
+
+# Usar el método .info() para obtener información sobre el DataFrame
+df.info()
+
+# Contar cuántas entradas hay
+number_of_entries = len(df)
+print(f'Número de entradas: {number_of_entries}')
+
+# Generar un archivo (por ejemplo, CSV)
+df_head.to_csv('punto_6.csv', index=False)
