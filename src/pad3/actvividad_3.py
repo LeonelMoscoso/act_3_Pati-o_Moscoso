@@ -167,12 +167,121 @@ styled_df
 # Cargar el DataFrame (aquí debes especificar la fuente de tus datos)
 # df = pd.read_csv('tu_archivo.csv')  # Por ejemplo, si es un CSV
 
-# Usar el método .info() para obtener información sobre el DataFrame
+# **Obtener información sobre el DataFrame**
 df.info()
 
-# Contar cuántas entradas hay
+# **Contar cuántas entradas hay**
 number_of_entries = len(df)
 print(f'Número de entradas: {number_of_entries}')
 
-# Generar un archivo (por ejemplo, CSV)
-df_head.to_csv('punto_6.csv', index=False)
+# **Seleccionar las primeras filas del DataFrame (opcional)**
+df_head = df.head()  # Por ejemplo, puedes usar las primeras 5 filas
+
+# **Generar un archivo CSV**
+df_head.to_csv('punto_6_entradas.csv', index=False)
+
+
+# precio promedio
+ata = {
+    'country': ['US', 'Spain', 'US', 'France'],
+    'description': [
+        "This tremendous 100% varietal wine...",
+        "Pure aroma of fig, blackberry...",
+        "This wine spent 20 months...",
+        "This is the top wine from LA Begude..."
+    ],
+    'designacao': ['Marley’s Vineyard', 'Cardorum Selection Especial Reserve', 'Special selected Lieu-Reserve', 'La Brilade'],
+    'points': [96, 90, 96, 95],
+    'price': [130.0, 190.0, 96.0, 66.0],
+    'province': ['California', 'Northern Spain', 'California', 'Provence'],
+    'region_1': ['Napa Valley', 'Yoro', 'Sonoma', 'Nîmes'],
+    'variety': ['Cabernet Sauvignon', 'Tinto', 'Sauvignon Blanc', 'Provence red blend'],
+    'winery': ['Hertz', 'Bodega Carmen Rodriguez', 'Macayda', 'Domaine de la Begude']
+}
+
+df = pd.DataFrame(data)
+
+# Calcular el precio promedio
+average_price = df['price'].mean()
+
+# Guardar el resultado en un archivo CSV
+result = pd.DataFrame({'Average Price': [average_price]})
+result.to_csv('average_wine_price.csv', index=False)
+
+print("Archivo 'average_wine_price.csv' creado con el precio promedio.")
+
+# Verificar la versión de Python
+import sys
+
+# Versión mínima requerida
+MIN_PYTHON_VERSION = (3, 6)
+
+def check_python_version():
+    if sys.version_info < MIN_PYTHON_VERSION:
+        print(f"Error: Se requiere Python {MIN_PYTHON_VERSION[0]}.{MIN_PYTHON_VERSION[1]} o superior.")
+        print(f"Versión actual: {sys.version}")
+        return False
+    print(f"Versión de Python correcta: {sys.version}")
+    return True
+
+# Verificar versiones de librerías específicas (ejemplo: pandas)
+def check_library_version(library, min_version):
+    try:
+        module = __import__(library)
+        if tuple(map(int, module.__version__.split('.'))) < min_version:
+            print(f"Error: Se requiere {library} {min_version} o superior. Versión actual: {module.__version__}")
+            return False
+        print(f"{library} tiene la versión correcta: {module.__version__}")
+        return True
+    except ImportError:
+        print(f"Error: {library} no está instalado.")
+        return False
+
+# Ejecución de las verificaciones
+if __name__ == "__main__":
+    if check_python_version():
+        check_library_version('pandas', (1, 1))
+        check_library_version('numpy', (1, 18))
+        
+        import shutil
+import os
+
+# crear copia d e seguridad
+# Función para crear una copia de seguridad de un directorio
+
+def crear_copia_seguridad(ruta_origen, ruta_destino):
+    # Verifica si la ruta de origen existe
+    if not os.path.exists(ruta_origen):
+        print(f"La ruta de origen '{ruta_origen}' no existe.")
+        return
+
+    # Si la ruta de destino no existe, créala
+    if not os.path.exists(ruta_destino):
+        os.makedirs(ruta_destino)
+
+    # Crea la copia de seguridad
+    try:
+        shutil.copytree(ruta_origen, ruta_destino, dirs_exist_ok=True)
+        print(f"Copia de seguridad realizada desde '{ruta_origen}' a '{ruta_destino}'.")
+    except Exception as e:
+        print(f"Error al crear la copia de seguridad: {e}")
+
+# Ejemplo de uso
+ruta_origen = 'C:\actvidad_3_final\act_3_Pati-o_Moscoso\src\pad3\actvividad_3.py'
+ruta_destino = 'C:\actvidad_3_final\act_3_Pati-o_Moscoso\src\pad3\backup'
+# Llama a la función para crear la copia de seguridad
+
+
+crear_copia_seguridad(ruta_origen, ruta_destino)
+
+# Encontrar el precio más alto
+max_price_row = df.loc[df['price'].idxmax()]
+
+# Mostrar información del vino con el precio más alto
+print("Vino con el precio más alto:")
+print(max_price_row)
+
+# Guardar la información en un archivo CSV
+max_price_row.to_frame().T.to_csv('vino_mas_caro.csv', index=False)
+
+print("Información guardada en 'vino_mas_caro.csv'")
