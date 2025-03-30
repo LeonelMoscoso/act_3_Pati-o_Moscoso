@@ -422,3 +422,4 @@ df.to_csv('punto_12_tipo uvas california.csv', index=False)
 # Imprimir en un formato similar al de la imagen
 print(df.to_string(index=False))
 print("Name: variety, dtype: int64")
+
