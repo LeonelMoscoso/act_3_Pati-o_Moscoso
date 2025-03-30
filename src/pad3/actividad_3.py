@@ -140,7 +140,7 @@ data = {
 df = pd.DataFrame(data)
 
 # Guardar en un archivo CSV
-df.to_csv('punto4_reviews.csv', index=False)
+df.to_csv('reviews.csv', index=False)
 
 print("Archivo 'reviews.csv' generado con éxito.")
 
@@ -448,4 +448,17 @@ except FileNotFoundError:
     print(f"El archivo no se encontró en la ruta: {file_path}")
     
     df = pd.read_csv(r'C:\dataset_wine\winemag-data_first150k.csv')
+    
+    # excepciones
+    try:
+        df = pd.read_csv(file_path)
+        print(df.head())  # Muestra las primeras filas del DataFrame
+    except FileNotFoundError:
+        print("El archivo no se encuentra en la ruta especificada.")
+    except pd.errors.EmptyDataError:
+        print("El archivo está vacío.")
+    except pd.errors.ParserError:
+        print("Error al analizar el archivo. Verifica el formato CSV.")
+    except Exception as e:
+        print(f"Se produjo un error desconocido: {e}")
     
