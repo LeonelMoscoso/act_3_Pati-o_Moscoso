@@ -46,8 +46,17 @@ utensilios.to_csv('punto3_utensilios.csv', header=True)
 
 # Cargar el dataset
 file_path = r'C:\dataset_wine\winemag-data_first150k.csv'  # Reemplaza esto con la ruta del archivo CSV
-wine_data = pd.read_csv(file_path)
-df = pd.read_csv('C:\dataset_wine\winemag-data_first150k.csv', encoding='utf-8')
+try:
+    wine_data = pd.read_csv(file_path)
+    print(wine_data.head())  # Muestra las primeras filas del DataFrame
+except FileNotFoundError:
+    print("El archivo no se encuentra en la ruta especificada.")
+except pd.errors.EmptyDataError:
+    print("El archivo está vacío.")
+except pd.errors.ParserError:
+    print("Error al analizar el archivo. Verifica el formato CSV.")
+except Exception as e:
+    print(f"Se produjo un error desconocido: {e}")
 
 
 # Mostrar las primeras filas para verificar la carga
