@@ -467,18 +467,20 @@ except FileNotFoundError:
         
         df = pd.read_csv('new_path_to_your_file/winemag-data_first150k.csv')
         
-        try: 
-            # Intenta cargar el archivo CSV
-            df = pd.read_csv('C:\\dataset_wine\\winemag-data_first150k.csv')
-        except FileNotFoundError:
-            print("El archivo no se encuentra en la ruta especificada.")
-        except pd.errors.EmptyDataError:
-            print("El archivo está vacío.")
-        except pd.errors.ParserError:
-            print("Error al analizar el archivo. Verifica el formato CSV.")
-        except Exception as e:
-            print(f"Se produjo un error desconocido: {e}")
-    df = pd.read_csv('C:\\dataset_wine\\winemag-data_first150k.csv')
-except FileNotFoundError:
-    print("El archivo no se encuentra en la ruta especificada.")
-    
+        # Verifica si el archivo existe antes de intentar leerlo
+if not os.path.exists(file_path):
+    print(f"Error: El archivo no se encuentra en la ruta especificada: {file_path}")
+else:
+    try:
+        # Intenta leer el archivo
+        wine_data = pd.read_csv(file_path)
+        print("Archivo leído correctamente.")
+        print(wine_data.head())  # Muestra las primeras filas para verificar
+    except FileNotFoundError:
+        print(f"Error: El archivo no se encontró en la ruta especificada: {file_path}")
+    except pd.errors.ParserError:
+        print("Error: Hubo un problema al analizar el archivo CSV. Verifica el formato.")
+    except Exception as e:
+        print(f"Se produjo un error inesperado: {e}")
+        
+        
