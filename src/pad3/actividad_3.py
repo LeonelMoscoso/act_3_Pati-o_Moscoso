@@ -2,7 +2,6 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
-
 print(os.getcwd())
 
 class actividad_3:
@@ -45,7 +44,7 @@ print(utensilios)
 utensilios.to_csv('punto3_utensilios.csv', header=True)
 
 # Cargar el dataset
-file_path = r'C:\dataset_wine\winemag-data_first150k.csv'  # Reemplaza esto con la ruta del archivo CSV
+file_path = r'C:\dataset_wine\winemag-data_first150k'  # Reemplaza esto con la ruta del archivo CSV
 try:
     wine_data = pd.read_csv(file_path)
     print(wine_data.head())  # Muestra las primeras filas del DataFrame
