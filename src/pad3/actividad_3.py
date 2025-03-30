@@ -8,6 +8,11 @@ class actividad_3:
     def __init__(self):
         pass
     
+   # Opción 1: Usar doble barra invertida
+df = pd.read_csv('C:\\dataset_wine\\winemag-data_first150k.csv')
+
+df = pd.read_csv(r'C:\dataset_wine\winemag-data_first150k.csv')
+
     # Cargar el dataset
 file_path = r'C:\\dataset_wine\\winemag-data_first150k'  # Reemplaza esto con la ruta del archivo CSV
 try:
