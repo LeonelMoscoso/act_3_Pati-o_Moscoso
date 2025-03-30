@@ -3,6 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
+print(os.getcwd())
+
 class actividad_3:
     def __init__(self):
         pass
@@ -137,6 +139,16 @@ print("Archivo 'reviews.csv' generado con éxito.")
 
 # Cargar los datos en un DataFrame (cambia 'ruta/a/tu/archivo.csv' con la ruta de tu archivo)
 df = pd.read_csv('C:\dataset_wine\winemag-data_first150k.csv')
+
+# Ensure the path is correct as per your directory structure
+file_path = r'C:\dataset_wine\winemag-data_first150k.csv' 
+
+try:
+    df = pd.read_csv(file_path)
+    print(df.head())  # Display the first few rows of the DataFrame
+except FileNotFoundError as e:
+    print(f"Error: {e}")
+    print("Please check if the file path is correct and the file exists.")
 
 # Para obtener las primeras cinco filas
 df_head = df.head(5)
@@ -427,4 +439,6 @@ try:
     wine_data = pd.read_csv(file_path)
 except FileNotFoundError:
     print(f"El archivo no se encontró en la ruta: {file_path}")
+    
+    df = pd.read_csv(r'C:\dataset_wine\winemag-data_first150k.csv')
     
