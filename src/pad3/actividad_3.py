@@ -8,24 +8,72 @@ class actividad_3:
     def __init__(self):
         pass
     
-   # Opción 1: Usar doble barra invertida
-df = pd.read_csv('C:\\dataset_wine\\winemag-data_first150k.csv')
+# Especificar la ruta del archivo, por ejemplo, un archivo CSV
+archivo = 'C:\dataset_final\winemag-data_first150k.csv'
 
-df = pd.read_csv(r'C:\dataset_wine\winemag-data_first150k.csv')
+# Cargar el dataset
+dataset = pd.read_csv('C:\dataset_final\winemag-data_first150k.csv')
 
-    # Cargar el dataset
-file_path = r'C:\\dataset_wine\\winemag-data_first150k'  # Reemplaza esto con la ruta del archivo CSV
-try:
-    wine_data = pd.read_csv(file_path)
-    print(wine_data.head())  # Muestra las primeras filas del DataFrame
-except FileNotFoundError:
-    print("El archivo no se encuentra en la ruta especificada.")
-except pd.errors.EmptyDataError:
-    print("El archivo está vacío.")
-except pd.errors.ParserError:
-    print("Error al analizar el archivo. Verifica el formato CSV.")
-except Exception as e:
-    print(f"Se produjo un error desconocido: {e}")
+# Definir df aquí
+data = {
+    'variety': ['Pinot Noir', 'Cabernet Sauvignon', 'Chardonnay', 'Zinfandel', 'Syrah', 
+                'Merlot', 'Sauvignon Blanc', 'Red Blend', 'Bordeaux-style Red Blend', 'Petite Sirah'],
+    'counts': [7633, 7452, 6536, 3691, 2705, 2293, 2220, 1783, 1130, 830]
+}
+df = pd.DataFrame(data)
+
+# Ahora puedes imprimir df
+print(df.head())
+
+# Mostrar las primeras filas del dataset
+print(dataset.head())
+
+# Mostrar las primeras filas del DataFrame
+print("Primeras filas del DataFrame:")
+print(df.head())
+
+# Resumen de estadísticas descriptivas
+print("\nEstadísticas descriptivas:")
+print(df.describe())
+
+# Mostrar la cantidad de vinos por variedad
+variedad_count = df['variety'].value_counts()
+
+print("\nCantidad de vinos por variedad:")
+print(variedad_count)
+
+# Gráfico de barras de las 10 variedades más comunes
+plt.figure(figsize=(10, 6))
+variedad_count.head(10).plot(kind='bar', color='skyblue')
+plt.title('Top 10 Variedades de Vinos')
+plt.xlabel('Variedad')
+plt.ylabel('Cantidad')
+plt.xticks(rotation=45)
+plt.grid(axis='y')
+
+# Mostrar el gráfico
+plt.tight_layout()
+plt.show()
+
+# Filtrar vinos con puntaje mayor a 90
+vinos_altos = df[df['points'] > 90]
+print("\nVinos con puntaje mayor a 90:")
+print(vinos_altos[['variety', 'points']].head())
+print(df.columns.tolist())
+# Eliminar espacios en nombres de columnas:
+df.columns = df.columns.str.strip()
+# Paso 1: Verificar columnas
+print("Columnas disponibles:", df.columns.tolist())
+
+# Paso 2: Corregir el nombre (ejemplo si la columna se llama "Points")
+vinos_altos = df[df['points'] > 90]
+
+# Opcional: Renombrar la columna (si prefieres usar "points")
+df = df.rename(columns={'points': 'points'})
+vinos_altos = df[df['points'] > 90]
+print("Columnas del DataFrame:", df.columns.tolist())
+
+
     
         # Crear un DataFrame
 data = {
@@ -149,10 +197,10 @@ df.to_csv('reviews.csv', index=False)
 print("Archivo 'reviews.csv' generado con éxito.")
 
 # Cargar los datos en un DataFrame (cambia 'ruta/a/tu/archivo.csv' con la ruta de tu archivo)
-df = pd.read_csv('C:\dataset_wine\winemag-data_first150k.csv')
+df = pd.read_csv('C:\dataset_final\winemag-data_first150k.csv')
 
 # Ensure the path is correct as per your directory structure
-file_path = r'C:\dataset_wine\winemag-data_first150k.csv' 
+file_path = r'C:\dataset_final\winemag-data_first150k.csv' 
 
 try:
     df = pd.read_csv(file_path)
@@ -346,7 +394,7 @@ df.to_csv('punto_9_vinos california.csv', index=False)
 #
 # Cargar el dataset (cambia 'ruta_a_tu_archivo.csv' con la ruta de tu archivo CSV)
 
-wines = pd.read_csv('C:\dataset_wine\winemag-data_first150k.csv')
+wines = pd.read_csv('C:\dataset_final\winemag-data_first150k.csv')
 
 # Encuentra el índice del vino con el precio más alto
 indice_max_precio = wines['price'].idxmax()
